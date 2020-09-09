@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:controls="clr-namespace:XamarinUI.ImFeelingLucky.Controls" xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:local="clr-namespace:XamarinUI.ImFeelingLucky"
+             x:Class="XamarinUI.ImFeelingLucky.MainPage"
+             NavigationPage.HasNavigationBar="False"
+             >
+
+    <ContentPage.BindingContext>
+        <local:MainViewModel />
+    </ContentPage.BindingContext>
+    
+    <ContentPage.Content>
+        <Grid>
+
+            <Grid.Padding>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS" Value="0,35,0,0" />
+                    <On Platform="Android" Value="0" />
+                </OnPlatform>
+            </Grid.Padding>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.3*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+
+            <controls:CustomFrame Margin="10" Grid.Row="0" CornerRadius="15" BackgroundGradientStartColor="#f1c40f" BackgroundGradientEndColor="Yellow">
+
+                <controls:CustomFrame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToSortitionPageCommand}" />
+                </controls:CustomFrame.GestureRecognizers>
+                
+                <StackLayout Orientation="Horizontal">
+
+                    <StackLayout VerticalOptions="Center" Margin="15">
+                        <Label Text="IM FEELING LUCKY 🍀" TextColor="Black" FontSize="Body" FontAttributes="Bold" />
+                        <Label Text="Tap here to test your luck" TextColor="Black" />
+                    </StackLayout>
+                    
+                    <forms:AnimationView 
+                        Margin="15"
+                        Opacity="0.4"
+	                    x:Name="animationView" 
+	                    Animation="starbadge.json" 
+	                    Loop="False" 
+	                    AutoPlay="True"
+                        Speed="0.5"
+	                    VerticalOptions="FillAndExpand" 
+	                    HorizontalOptions="FillAndExpand"
+                        ClickedCommand="{Binding NavigateToSortitionPageCommand}"
+                        />
+
+                </StackLayout>
+                
+            </controls:CustomFrame>
+
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

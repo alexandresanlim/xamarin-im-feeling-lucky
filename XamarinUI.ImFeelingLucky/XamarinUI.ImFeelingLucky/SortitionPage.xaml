@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:local="clr-namespace:XamarinUI.ImFeelingLucky" xmlns:forms="clr-namespace:Particle.Forms;assembly=Particle.Forms" xmlns:controls="clr-namespace:XamarinUI.ImFeelingLucky.Controls" xmlns:forms1="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" xmlns:converter="clr-namespace:XamarinUI.ImFeelingLucky.Converters"
+             x:Class="XamarinUI.ImFeelingLucky.SortitionPage"
+             NavigationPage.HasNavigationBar="False"
+             >
+    
+    <ContentPage.BindingContext>
+        <local:SortitionViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <x:Array Type="{x:Type Color}" x:Key="ConfettiColors">
+            <Color>#a864fd</Color>
+            <Color>#29cdff</Color>
+            <Color>#78ff44</Color>
+            <Color>#ff718d</Color>
+            <Color>#fdff6a</Color>
+            <Color>#ffcbf2</Color>
+        </x:Array>
+        <ResourceDictionary>
+            <converter:HasDataConverter x:Key="hasDataConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+
+                <StackLayout Padding="15" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+                    <forms1:AnimationView 
+                        Margin="15"
+	                    Animation="{Binding CurrentAnimation}" 
+	                    Loop="True" 
+	                    AutoPlay="True"
+                        Speed="0.5"
+	                    WidthRequest="250"
+                        HeightRequest="250"
+                        IsVisible="{Binding CurrentAnimation, Converter={StaticResource hasDataConverter}}"
+                        />
+
+                    <Label Text="{Binding CurrentEmoji}" FontSize="100" HorizontalOptions="CenterAndExpand" IsVisible="{Binding CurrentEmoji, Converter={StaticResource hasDataConverter}}" />
+
+                    <Label Text="{Binding CurrentPhrase}" FontSize="Medium" FontAttributes="Bold" HorizontalOptions="Center" PropertyChanged="Label_PropertyChanged" />
+                </StackLayout>
+
+
+                <Grid 
+                VerticalOptions="FillAndExpand"
+                IsVisible="{Binding CurrentLuck.IsLuck}"
+                >
+
+
+                    <forms:ParticleView 
+                    x:Name="MyParticleCanvas"
+                    IsActive="True"
+                    HasFallingParticles="True"
+                    IsRunning="True"
+                    FallingParticlesPerSecond="50"
+                    Margin="0, 20"
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    ParticleColors="{StaticResource ConfettiColors}" 
+                    />
+                </Grid>
+
+            </Grid>
+
+            <StackLayout Grid.Row="1" Padding="10" IsVisible="{Binding ButtonVisible}">
+                <controls:CustomFrame CornerRadius="25" HorizontalOptions="FillAndExpand" BackgroundColor="#f1c40f" Padding="15">
+                    <Label Text="Redeem" FontSize="Small" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center"/>
+                </controls:CustomFrame>
+            </StackLayout>
+
+        </Grid>
+
+
+
+
+
+    </ContentPage.Content>
+
+
+</ContentPage>
