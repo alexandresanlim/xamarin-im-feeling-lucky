@@ -19,8 +19,8 @@
 ## More
 
 Third-party NuGet packages: <br/>
-[Pancake View](https://github.com/sthewissen/Xamarin.Forms.PancakeView)
-[LottieXamarin](https://github.com/Baseflow/LottieXamarin)
+[Pancake View](https://github.com/sthewissen/Xamarin.Forms.PancakeView) <br/>
+[LottieXamarin](https://github.com/Baseflow/LottieXamarin) <br/>
 [Particle Forms](https://github.com/mariusmuntean/Particle.Forms)
 
 <a href="https://github.com/alexandresanlim/XamarinUI.MyGallery"><img src="https://github.com/alexandresanlim/XamarinUI.MyGallery/blob/master/xamarin_ui_gallery_head.png?raw=true" /></a>
